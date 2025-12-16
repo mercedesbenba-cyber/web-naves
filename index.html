@@ -1,308 +1,681 @@
-<style>
-    /* --- VARIABLES Y RESET --- */
-    :root {
-        --primary: #2c3e50; /* Azul Acero Oscuro */
-        --accent: #f39c12;  /* Naranja Construcción */
-        --whatsapp: #25d366; /* Verde WhatsApp Original */
-        --light: #ecf0f1;
-        --dark: #1a252f;
-        --white: #ffffff;
-        --shadow: 0 10px 30px rgba(0,0,0,0.1);
-        --transition: all 0.3s ease;
-    }
-
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
-    body {
-        font-family: 'Roboto', sans-serif;
-        color: var(--dark);
-        line-height: 1.6;
-        background-color: #f9f9f9;
-    }
-
-    h1, h2, h3, h4 {
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 700;
-        color: var(--primary);
-    }
-
-    a { text-decoration: none; color: inherit; transition: var(--transition); }
-    ul { list-style: none; }
-    img { max-width: 100%; display: block; }
-
-    /* --- BOTONES --- */
-    .btn {
-        display: inline-block;
-        padding: 12px 30px;
-        border-radius: 5px;
-        font-weight: 600;
-        text-transform: uppercase;
-        cursor: pointer;
-        letter-spacing: 1px;
-        border: none;
-    }
-
-    .btn-primary {
-        background-color: var(--accent);
-        color: var(--white);
-    }
-
-    .btn-primary:hover {
-        background-color: #e67e22;
-        transform: translateY(-2px);
-        box-shadow: 0 5px 15px rgba(243, 156, 18, 0.4);
-    }
-
-    .btn-outline {
-        border: 2px solid var(--white);
-        color: var(--white);
-        margin-left: 10px;
-    }
-
-    .btn-outline:hover {
-        background-color: var(--white);
-        color: var(--primary);
-    }
-
-    /* --- WHATSAPP FLOTANTE --- */
-    .whatsapp-float {
-        position: fixed;
-        width: 60px;
-        height: 60px;
-        bottom: 30px;
-        right: 30px;
-        background-color: var(--whatsapp);
-        color: #FFF;
-        border-radius: 50px;
-        text-align: center;
-        font-size: 30px;
-        box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
-        z-index: 10000;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: all 0.3s ease;
-        /* Animación de latido */
-        animation: pulse 2s infinite;
-    }
-
-    .whatsapp-float:hover {
-        background-color: #20b858;
-        transform: scale(1.1);
-        text-decoration: none;
-        color: white;
-    }
-
-    @keyframes pulse {
-        0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-        70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
-        100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
-    }
-
-    /* --- NAVBAR --- */
-    header {
-        background-color: var(--white);
-        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        position: fixed;
-        width: 100%;
-        top: 0;
-        z-index: 1000;
-    }
-
-    .nav-container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 15px 20px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .logo {
-        font-size: 1.5rem;
-        font-weight: 800;
-        color: var(--primary);
-        display: flex;
-        align-items: center;
-    }
-
-    .logo i { margin-right: 10px; color: var(--accent); }
-
-    .nav-links { display: flex; gap: 30px; }
-    .nav-links a { font-weight: 500; font-size: 0.9rem; color: var(--primary); }
-    .nav-links a:hover { color: var(--accent); }
-    .cta-nav { display: none; }
-
-    @media(min-width: 768px) { .cta-nav { display: block; } }
-
-    /* --- HERO SECTION --- */
-    .hero {
-        /* Imagen de fondo simulada */
-        background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.7)), url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
-        background-size: cover;
-        background-position: center;
-        height: 100vh;
-        display: flex;
-        align-items: center;
-        text-align: center;
-        color: var(--white);
-        padding-top: 80px;
-    }
-
-    .hero-content {
-        max-width: 900px;
-        margin: 0 auto;
-        padding: 20px;
-    }
-
-    .hero h1 {
-        font-size: 3rem;
-        color: var(--white);
-        margin-bottom: 20px;
-        line-height: 1.2;
-    }
-
-    .hero p {
-        font-size: 1.2rem;
-        margin-bottom: 40px;
-        opacity: 0.9;
-    }
-
-    /* --- CARACTERÍSTICAS (FEATURES) --- */
-    .features { padding: 80px 20px; background: var(--white); }
-    .container { max-width: 1200px; margin: 0 auto; }
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MetalPro Estructuras Metálicas</title>
     
-    .section-header { text-align: center; margin-bottom: 60px; }
-    .section-header h2 { font-size: 2.5rem; margin-bottom: 10px; }
-    .section-header .divider { height: 4px; width: 60px; background: var(--accent); margin: 0 auto; }
-
-    .features-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 30px;
-    }
-
-    .feature-card {
-        padding: 30px;
-        text-align: center;
-        border-radius: 10px;
-        background: #fff;
-        box-shadow: var(--shadow);
-        transition: var(--transition);
-        border-bottom: 3px solid transparent;
-    }
-
-    .feature-card:hover {
-        transform: translateY(-10px);
-        border-bottom: 3px solid var(--accent);
-    }
-
-    .feature-card i {
-        font-size: 3rem;
-        color: var(--primary);
-        margin-bottom: 20px;
-    }
-
-    /* --- PRODUCTOS / GALERÍA --- */
-    .products { padding: 80px 20px; background: var(--light); }
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
-    .product-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 20px;
-    }
+    <style>
+        /* --- VARIABLES Y RESET --- */
+        :root {
+            --primary: #2c3e50; /* Azul Acero */
+            --accent: #f39c12; /* Naranja Contraste */
+            --whatsapp: #25d366; /* Verde WhatsApp */
+            --light: #ecf0f1;
+            --dark: #1a252f;
+            --white: #ffffff;
+            --shadow: 0 10px 30px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
+        }
 
-    .product-card {
-        background: var(--white);
-        border-radius: 10px;
-        overflow: hidden;
-        box-shadow: var(--shadow);
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    .product-img {
-        height: 250px;
-        background-color: #ccc;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #666;
-        font-weight: bold;
-        background-size: cover;
-        background-position: center;
-    }
-    
-    /* Simulación de imágenes */
-    .img-1 { background-image: url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=800&q=80'); }
-    .img-2 { background-image: url('https://images.unsplash.com/photo-1535732759880-bbd5c7265e3f?auto=format&fit=crop&w=800&q=80'); }
-    .img-3 { background-image: url('https://images.unsplash.com/photo-1518640165980-d3e0e2aa6c1e?auto=format&fit=crop&w=800&q=80'); }
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: var(--dark);
+            line-height: 1.6;
+            background-color: var(--light);
+            overflow-x: hidden;
+        }
 
-    .product-info { padding: 25px; }
-    .product-info h3 { margin-bottom: 10px; font-size: 1.4rem; }
-    .product-info ul { margin: 15px 0; font-size: 0.9rem; color: #666; }
-    .product-info li { margin-bottom: 5px; }
-    .product-info li i { color: var(--accent); margin-right: 5px; }
+        a {
+            text-decoration: none;
+            color: var(--primary);
+            transition: var(--transition);
+        }
 
-    /* --- CONTACTO / LEAD GEN --- */
-    .contact {
-        padding: 80px 20px;
-        background: var(--primary);
-        color: var(--white);
-    }
+        a:hover {
+            color: var(--accent);
+        }
 
-    .contact-container {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 50px;
-        max-width: 1200px;
-        margin: 0 auto;
-    }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
 
-    .contact-info { flex: 1; min-width: 300px; }
-    .contact-info h2 { color: var(--white); margin-bottom: 20px; }
-    .contact-item { display: flex; align-items: center; margin-bottom: 20px; }
-    .contact-item i { font-size: 1.5rem; color: var(--accent); margin-right: 15px; }
+        /* --- BOTONES --- */
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: var(--transition);
+            cursor: pointer;
+            text-align: center;
+            border: 2px solid transparent;
+        }
 
-    .contact-form {
-        flex: 1;
-        min-width: 300px;
-        background: var(--white);
-        padding: 40px;
-        border-radius: 10px;
-        color: var(--dark);
-    }
+        .btn-primary {
+            background-color: var(--accent);
+            color: var(--white);
+        }
 
-    .form-group { margin-bottom: 20px; }
-    .form-group label { display: block; margin-bottom: 5px; font-weight: 600; font-size: 0.9rem; }
-    .form-control {
-        width: 100%;
-        padding: 12px;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        font-family: inherit;
-    }
-    
-    select.form-control { background-color: white; }
+        .btn-primary:hover {
+            background-color: #e67e22;
+        }
 
-    /* --- FOOTER --- */
-    footer {
-        background: var(--dark);
-        color: #7f8c8d;
-        padding: 40px 20px;
-        text-align: center;
-    }
-    
-    /* Mobile Nav */
-    .hamburger { display: none; font-size: 1.5rem; cursor: pointer; }
-    @media(max-width: 768px) {
-        .nav-links { display: none; }
-        .hamburger { display: block; }
-        .hero h1 { font-size: 2rem; }
-        .contact-container { flex-direction: column; }
-        .whatsapp-float { width: 50px; height: 50px; font-size: 25px; bottom: 20px; right: 20px; }
-    }
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary);
+            border-color: var(--primary);
+        }
 
-  </style>
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        /* --- WHATSAPP FLOTANTE --- */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--whatsapp);
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 0px 5px 15px rgba(0,0,0,0.3);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            color: #FFF; /* Asegura el color blanco en hover */
+        }
+
+        /* --- HEADER Y NAVEGACIÓN --- */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 990;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .logo i {
+            color: var(--accent);
+            margin-right: 8px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--dark);
+            font-weight: 500;
+        }
+
+        .cta-nav {
+            display: block;
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary);
+        }
+
+        /* --- SECCIÓN HERO --- */
+        .hero {
+            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), url('https://via.placeholder.com/1500x800/2c3e50/ffffff?text=Nave+Metálica+Fondo') no-repeat center center/cover;
+            color: var(--white);
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 20px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .hero .btn {
+            margin: 0 10px;
+        }
+
+        /* --- SECCIONES GENERALES --- */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .divider {
+            width: 60px;
+            height: 4px;
+            background-color: var(--accent);
+            margin: 0 auto;
+            border-radius: 2px;
+        }
+
+        /* --- SECCIÓN FEATURES --- */
+        .features {
+            background-color: var(--white);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background-color: var(--light);
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .feature-card i {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+
+        .feature-card h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        /* --- SECCIÓN PRODUCTOS/MODELOS --- */
+        .products {
+            background-color: var(--light);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .product-card:hover {
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        .product-img {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Imágenes de placeholder */
+        .img-1 { background-image: url('https://via.placeholder.com/800x600/34495e/ffffff?text=NAVE+DOBLE'); }
+        .img-2 { background-image: url('https://via.placeholder.com/800x600/e74c3c/ffffff?text=GARAJE+RESIDENCIAL'); }
+        .img-3 { background-image: url('https://via.placeholder.com/800x600/2980b9/ffffff?text=ALMACÉN+LOGÍSTICO'); }
+
+
+        .product-info {
+            padding: 25px;
+        }
+
+        .product-info h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .product-info ul {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .product-info li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .product-info li i {
+            color: var(--whatsapp);
+            margin-right: 10px;
+        }
+
+        /* --- SECCIÓN CONTACTO --- */
+        .contact {
+            background-color: var(--white);
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 50px;
+            align-items: start;
+        }
+
+        .contact-info h2 {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .contact-item i {
+            font-size: 1.8rem;
+            color: var(--accent);
+            margin-right: 20px;
+            width: 40px;
+            text-align: center;
+        }
+
+        .contact-item h4 {
+            color: var(--primary);
+            font-size: 1rem;
+            margin-bottom: 2px;
+        }
+
+        .contact-item p {
+            margin: 0;
+            opacity: 0.8;
+        }
+
+        .contact-form {
+            background-color: var(--light);
+            padding: 30px;
+            border-radius: 8px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 1rem;
+        }
+
+        .form-control:focus {
+            border-color: var(--accent);
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(243, 156, 18, 0.2);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--dark);
+            color: var(--light);
+            text-align: center;
+            padding: 30px 0;
+            font-size: 0.9rem;
+        }
+
+        footer i {
+            color: var(--white);
+        }
+
+        footer i:hover {
+            color: var(--accent);
+        }
+
+
+        /* --- RESPONSIVE / VISTA MÓVIL --- */
+        @media (max-width: 900px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                height: 70vh;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links, .cta-nav {
+                display: none;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .nav-container {
+                padding: 0 15px;
+            }
+
+            .hero .btn {
+                display: block;
+                margin: 15px auto;
+            }
+
+            .feature-card {
+                padding: 20px;
+            }
+
+            .contact-form {
+                order: 1; /* Pone el formulario antes de la información en móvil */
+            }
+
+            .contact-info {
+                order: 2;
+                text-align: center;
+            }
+
+            .contact-item {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="https://wa.me/1234567890?text=Hola,%20me%20interesa%20cotizar%20una%20estructura%20metálica" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-warehouse"></i> MetalPro Estructuras
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#modelos">Modelos</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+            <div class="cta-nav">
+                <a href="#contacto" class="btn btn-primary">Cotizar Ahora</a>
+            </div>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <section id="inicio" class="hero">
+        <div class="hero-content">
+            <h1>Naves Industriales y Garajes Prefabricados de Clase Mundial</h1>
+            <p>Estructuras metálicas diseñadas para durar. Más de 17 años de experiencia construyendo soluciones rápidas, resistentes y económicas.</p>
+            <div>
+                <a href="#contacto" class="btn btn-primary">Solicitar Presupuesto</a>
+                <a href="#modelos" class="btn btn-outline">Ver Modelos</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="servicios" class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>¿Por qué elegir MetalPro?</h2>
+                <div class="divider"></div>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Máxima Durabilidad</h3>
+                    <p>Acero galvanizado de alta resistencia, diseñado para soportar climas extremos y corrosión.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-stopwatch"></i>
+                    <h3>Montaje Rápido</h3>
+                    <p>Sistema prefabricado que reduce el tiempo de construcción hasta en un 50% comparado con obras tradicionales.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-hand-holding-usd"></i>
+                    <h3>Precio Competitivo</h3>
+                    <p>Venta directa de fábrica. Optimizamos materiales para ofrecerte la mejor relación calidad-precio.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-medal"></i>
+                    <h3>17+ Años Experiencia</h3>
+                    <p>Líderes en estructuras metálicas (Canglong Steel Structure), con cientos de proyectos exitosos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="modelos" class="products">
+        <div class="container">
+            <div class="section-header">
+                <h2>Nuestros Modelos Populares</h2>
+                <div class="divider"></div>
+                <p style="margin-top: 15px; color: #666;">Adaptables para almacenes, talleres, garajes privados o naves agrícolas.</p>
+            </div>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-img img-1"></div>
+                    <div class="product-info">
+                        <h3>Nave Industrial Doble</h3>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Doble puerta enrollable</li>
+                            <li><i class="fas fa-check"></i> Ideal para maquinaria pesada</li>
+                            <li><i class="fas fa-check"></i> Altura libre personalizable</li>
+                        </ul>
+                        <a href="#contacto" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.8rem;">Ver Detalle</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img img-2"></div>
+                    <div class="product-info">
+                        <h3>Garaje Residencial</h3>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Acabado estético premium</li>
+                            <li><i class="fas fa-check"></i> Puerta peatonal incluida</li>
+                            <li><i class="fas fa-check"></i> Aislamiento térmico opcional</li>
+                        </ul>
+                        <a href="#contacto" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.8rem;">Ver Detalle</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img img-3"></div>
+                    <div class="product-info">
+                        <h3>Almacén Logístico</h3>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Grandes luces sin columnas</li>
+                            <li><i class="fas fa-check"></i> Ventanas de iluminación natural</li>
+                            <li><i class="fas fa-check"></i> Resistencia sísmica</li>
+                        </ul>
+                        <a href="#contacto" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.8rem;">Ver Detalle</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto" class="contact">
+        <div class="contact-container">
+            <div class="contact-info">
+                <h2>¡Construyamos tu Proyecto!</h2>
+                <p style="margin-bottom: 30px; opacity: 0.9;">Completa el formulario y uno de nuestros ingenieros te contactará en menos de 24 horas con una cotización personalizada.</p>
+                
+                <div class="contact-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <div>
+                        <h4>Llámanos</h4>
+                        <p>+1 (555) 123-4567</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <h4>Email</h4>
+                        <p>ventas@metalproestructuras.com</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <h4>Oficina</h4>
+                        <p>Zona Industrial, Nave 44</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <form id="quoteForm" onsubmit="handleFormSubmit(event)">
+                    <h3 style="color: var(--primary); margin-bottom: 20px;">Solicitar Cotización</h3>
+                    
+                    <div class="form-group">
+                        <label>Nombre Completo</label>
+                        <input type="text" class="form-control" placeholder="Tu nombre" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" class="form-control" placeholder="tucorreo@empresa.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Teléfono</label>
+                        <input type="tel" class="form-control" placeholder="(555) 000-0000" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Tipo de Estructura</label>
+                        <select class="form-control">
+                            <option>Garaje Personal</option>
+                            <option>Nave Industrial / Almacén</option>
+                            <option>Taller Mecánico</option>
+                            <option>Otro</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Dimensiones Estimadas / Detalles</label>
+                        <textarea class="form-control" rows="3" placeholder="Ej: 20x30 metros..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Enviar Solicitud</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 MetalPro Estructuras. Todos los derechos reservados.</p>
+        <div style="margin-top: 10px;">
+            <i class="fab fa-facebook fa-lg" style="margin: 0 10px; cursor: pointer;"></i>
+            <i class="fab fa-instagram fa-lg" style="margin: 0 10px; cursor: pointer;"></i>
+            <i class="fab fa-whatsapp fa-lg" style="margin: 0 10px; cursor: pointer;"></i>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Simulación de envío de formulario (esto lo cambiaremos por Formspree después)
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const btn = event.target.querySelector('button');
+            const originalText = btn.innerText;
+            
+            btn.innerText = "Enviando...";
+            btn.style.opacity = "0.7";
+            
+            setTimeout(() => {
+                alert("¡Gracias! Hemos recibido tu solicitud. Te contactaremos pronto.");
+                // event.target.reset(); // Comentamos el reset para probar la acción del formulario
+                btn.innerText = originalText;
+                btn.style.opacity = "1";
+            }, 1500);
+        }
+    </script>
+
+</body>
+    </html>
