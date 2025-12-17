@@ -3,22 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MetalPro Estructuras Metálicas</title>
+    <title>MetalPro Estructuras | Construimos tus Sueños</title>
     
-    <meta name="description" content="Naves industriales, garajes prefabricados y estructuras metálicas de alta resistencia. Montaje rápido. Contáctanos: +1 809 348 9618 o navesmetalpro@gmail.com.">
+    <meta name="description" content="Naves industriales, garajes prefabricados y estructuras metálicas de alta resistencia. Montaje rápido. Contáctanos: +1 809 348 9618 o navesmetalpro@gmail.com. Oficina: avenida los beisbolista #89.">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
     <style>
-        /* --- VARIABLES Y RESET --- */
+        /* --- VARIABLES Y RESET (NUEVO DISEÑO) --- */
         :root {
-            --primary: #2c3e50; /* Azul Acero */
-            --accent: #f39c12; /* Naranja Contraste */
+            --primary: #FF5722; /* Naranja/Rojo Vivo - Énfasis */
+            --secondary: #1A237E; /* Azul Marino Oscuro - Fondo principal */
+            --accent: #FFC107; /* Amarillo Brillante - Detalle */
             --whatsapp: #25d366; /* Verde WhatsApp */
-            --light: #ecf0f1;
-            --dark: #1a252f;
+            --light: #F5F5F5; /* Gris muy claro */
+            --dark: #000000;
             --white: #ffffff;
-            --shadow: 0 10px 30px rgba(0,0,0,0.1);
+            --shadow: 0 15px 40px rgba(0,0,0,0.3);
             --transition: all 0.3s ease;
         }
 
@@ -30,9 +31,9 @@
 
         body {
             font-family: 'Roboto', sans-serif;
-            color: var(--dark);
+            color: var(--light);
             line-height: 1.6;
-            background-color: var(--light);
+            background-color: var(--secondary);
             overflow-x: hidden;
         }
 
@@ -43,7 +44,7 @@
         }
 
         a:hover {
-            color: var(--accent);
+            opacity: 0.8;
         }
 
         .container {
@@ -54,35 +55,44 @@
 
         /* --- BOTONES --- */
         .btn {
-            display: inline-block;
-            padding: 12px 25px;
-            border-radius: 5px;
-            font-weight: bold;
+            display: block; /* Ahora son bloques por defecto para el diseño */
+            width: 100%; /* Ocupan todo el ancho en el Hero */
+            padding: 18px 30px;
+            border-radius: 8px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
             text-transform: uppercase;
             transition: var(--transition);
             cursor: pointer;
             text-align: center;
-            border: 2px solid transparent;
+            border: none;
         }
 
         .btn-primary {
-            background-color: var(--accent);
+            background-color: var(--primary);
             color: var(--white);
+            font-size: 1.2rem;
+            box-shadow: 0 4px 15px rgba(255, 87, 34, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
         }
 
         .btn-primary:hover {
-            background-color: #e67e22;
+            background-color: #E64A19;
         }
 
         .btn-outline {
             background-color: transparent;
-            color: var(--primary);
-            border-color: var(--primary);
+            color: var(--white);
+            border: 2px solid var(--white);
+            margin-top: 15px;
+            box-shadow: none;
         }
 
         .btn-outline:hover {
-            background-color: var(--primary);
-            color: var(--white);
+            background-color: rgba(255, 255, 255, 0.1);
         }
 
         /* --- WHATSAPP FLOTANTE --- */
@@ -97,7 +107,7 @@
             border-radius: 50px;
             text-align: center;
             font-size: 30px;
-            box-shadow: 0px 5px 15px rgba(0,0,0,0.3);
+            box-shadow: var(--shadow);
             z-index: 1000;
             display: flex;
             align-items: center;
@@ -107,13 +117,13 @@
 
         .whatsapp-float:hover {
             transform: scale(1.1);
-            color: #FFF; /* Asegura el color blanco en hover */
+            color: #FFF;
         }
 
         /* --- HEADER Y NAVEGACIÓN --- */
         header {
-            background-color: var(--white);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            background-color: rgba(26, 35, 126, 0.9); /* Transparencia para el efecto moderno */
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             padding: 15px 0;
             position: sticky;
             top: 0;
@@ -131,12 +141,12 @@
 
         .logo {
             font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--primary);
+            font-weight: 700;
+            color: var(--white);
         }
 
         .logo i {
-            color: var(--accent);
+            color: var(--primary);
             margin-right: 8px;
         }
 
@@ -147,7 +157,7 @@
         }
 
         .nav-links a {
-            color: var(--dark);
+            color: var(--light);
             font-weight: 500;
         }
 
@@ -159,44 +169,67 @@
             display: none;
             font-size: 1.5rem;
             cursor: pointer;
-            color: var(--primary);
-        }
-
-        /* --- SECCIÓN HERO --- */
-        .hero {
-            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), url('https://via.placeholder.com/1500x800/2c3e50/ffffff?text=Nave+Metálica+Fondo') no-repeat center center/cover;
             color: var(--white);
-            height: 80vh;
+        }
+        
+        /* --- SECCIÓN HERO (NUEVO DISEÑO CON IMAGEN DE FONDO) --- */
+        .hero {
+            /* Imagen de placeholder simulando obreros en estructura metálica */
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://via.placeholder.com/1500x1000/1A237E/ffffff?text=CONSTRUCCIÓN+NAVE+ACERO') no-repeat center center/cover;
+            height: 90vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
+            padding: 0 20px;
         }
 
         .hero-content {
-            max-width: 800px;
-            padding: 20px;
+            max-width: 900px;
+            padding: 40px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+
+        .hero .tag {
+            display: inline-block;
+            background-color: var(--accent);
+            color: var(--dark);
+            padding: 8px 15px;
+            border-radius: 50px;
+            font-weight: bold;
+            margin-bottom: 20px;
         }
 
         .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            line-height: 1.2;
+            font-size: 4rem;
+            margin-bottom: 10px;
+            line-height: 1.1;
+            font-weight: 900;
         }
-
+        
+        .hero h1 .solid { color: var(--primary); }
+        .hero h1 .fast { color: var(--accent); }
+        
         .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 40px;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
             opacity: 0.9;
         }
-
-        .hero .btn {
-            margin: 0 10px;
+        
+        .hero .btn-container {
+            max-width: 400px;
+            margin: 0 auto;
         }
-
+        
         /* --- SECCIONES GENERALES --- */
         section {
             padding: 80px 0;
+            color: var(--dark);
+        }
+        
+        .features {
+            background-color: var(--light);
         }
 
         .section-header {
@@ -206,161 +239,127 @@
 
         .section-header h2 {
             font-size: 2.2rem;
-            color: var(--primary);
+            color: var(--secondary);
             margin-bottom: 10px;
         }
 
         .divider {
             width: 60px;
             height: 4px;
-            background-color: var(--accent);
+            background-color: var(--primary);
             margin: 0 auto;
             border-radius: 2px;
         }
 
         /* --- SECCIÓN FEATURES --- */
-        .features {
-            background-color: var(--white);
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-
         .feature-card {
-            background-color: var(--light);
+            background-color: var(--white);
             padding: 30px;
             border-radius: 8px;
             text-align: center;
-            box-shadow: var(--shadow);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
             transition: var(--transition);
         }
 
         .feature-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
         }
 
         .feature-card i {
-            font-size: 2.5rem;
-            color: var(--accent);
+            font-size: 3rem;
+            color: var(--primary);
             margin-bottom: 15px;
         }
 
         .feature-card h3 {
-            color: var(--primary);
+            color: var(--secondary);
             margin-bottom: 10px;
         }
-
-        /* --- SECCIÓN PRODUCTOS/MODELOS --- */
-        .products {
-            background-color: var(--light);
-        }
-
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .product-card {
-            background-color: var(--white);
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-
-        .product-card:hover {
-            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
-        }
-
-        .product-img {
-            height: 250px;
-            background-size: cover;
-            background-position: center;
-        }
-
-        /* Imágenes de placeholder */
-        .img-1 { background-image: url('https://via.placeholder.com/800x600/34495e/ffffff?text=NAVE+DOBLE'); }
-        .img-2 { background-image: url('https://via.placeholder.com/800x600/e74c3c/ffffff?text=GARAJE+RESIDENCIAL'); }
-        .img-3 { background-image: url('https://via.placeholder.com/800x600/2980b9/ffffff?text=ALMACÉN+LOGÍSTICO'); }
-
-
-        .product-info {
-            padding: 25px;
-        }
-
-        .product-info h3 {
-            color: var(--primary);
-            margin-bottom: 15px;
-        }
-
-        .product-info ul {
-            list-style: none;
-            margin-bottom: 20px;
-        }
-
-        .product-info li {
-            display: flex;
-            align-items: center;
-            margin-bottom: 8px;
-        }
-
-        .product-info li i {
-            color: var(--whatsapp);
-            margin-right: 10px;
-        }
-
-        /* --- SECCIÓN CONTACTO --- */
+        
+        /* --- SECCIÓN CONTACTO (NUEVO DISEÑO) --- */
         .contact {
-            background-color: var(--white);
+            background-color: var(--secondary);
+            color: var(--white);
         }
-
+        
         .contact-container {
             display: grid;
-            grid-template-columns: 1fr 1.5fr;
+            grid-template-columns: 1fr 1fr;
             gap: 50px;
-            align-items: start;
+            align-items: center;
         }
 
+        .contact-info {
+            background-color: var(--secondary);
+            padding: 40px;
+            border-radius: 8px;
+        }
+        
         .contact-info h2 {
-            color: var(--primary);
-            font-size: 2rem;
-            margin-bottom: 15px;
+            color: var(--white);
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+        
+        .contact-info p {
+            font-size: 1.1rem;
+            opacity: 0.9;
         }
 
         .contact-item {
             display: flex;
             align-items: center;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+        
+        .contact-item:hover {
+            background-color: rgba(255, 255, 255, 0.1);
         }
 
         .contact-item i {
-            font-size: 1.8rem;
-            color: var(--accent);
+            font-size: 2rem;
+            color: var(--primary);
             margin-right: 20px;
             width: 40px;
             text-align: center;
         }
 
         .contact-item h4 {
-            color: var(--primary);
+            color: var(--accent);
             font-size: 1rem;
-            margin-bottom: 2px;
+            margin-bottom: 5px;
+            text-transform: uppercase;
         }
 
         .contact-item p {
             margin: 0;
-            opacity: 0.8;
+            color: var(--light);
+            font-weight: 500;
         }
 
         .contact-form {
-            background-color: var(--light);
-            padding: 30px;
+            background-color: var(--white);
+            padding: 40px;
             border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+
+        .contact-form h3 {
+             color: var(--secondary);
+             margin-bottom: 25px;
+             font-size: 1.8rem;
+        }
+        
+        .contact-form label {
+            color: var(--secondary);
+            font-weight: 500;
+            display: block;
+            margin-bottom: 5px;
         }
 
         .form-group {
@@ -369,17 +368,28 @@
 
         .form-control {
             width: 100%;
-            padding: 10px;
+            padding: 12px;
             border: 1px solid #ccc;
             border-radius: 4px;
             box-sizing: border-box;
             font-size: 1rem;
+            background-color: var(--light);
         }
 
         .form-control:focus {
-            border-color: var(--accent);
+            border-color: var(--primary);
             outline: none;
-            box-shadow: 0 0 0 2px rgba(243, 156, 18, 0.2);
+            box-shadow: 0 0 0 2px rgba(255, 87, 34, 0.2);
+        }
+        
+        .contact-form button {
+            background-color: var(--secondary);
+            color: var(--white);
+            border: none;
+        }
+        
+        .contact-form button:hover {
+            background-color: #1a254f;
         }
 
         /* --- FOOTER --- */
@@ -396,58 +406,41 @@
         }
 
         footer i:hover {
-            color: var(--accent);
+            color: var(--primary);
         }
 
 
         /* --- RESPONSIVE / VISTA MÓVIL --- */
         @media (max-width: 900px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
             .contact-container {
                 grid-template-columns: 1fr;
             }
-        }
-
-        @media (max-width: 768px) {
-            .hero {
-                height: 70vh;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .nav-links, .cta-nav {
-                display: none;
-            }
-
-            .hamburger {
-                display: block;
-            }
-
-            .nav-container {
-                padding: 0 15px;
-            }
-
-            .hero .btn {
-                display: block;
-                margin: 15px auto;
-            }
-
-            .feature-card {
-                padding: 20px;
-            }
-
-            .contact-form {
-                order: 1; /* Pone el formulario antes de la información en móvil */
-            }
-
             .contact-info {
                 order: 2;
                 text-align: center;
+                padding: 20px;
             }
-
             .contact-item {
-                justify-content: center;
+                justify-content: flex-start;
+                text-align: left;
+            }
+            .contact-form {
+                order: 1;
+                padding: 30px;
+            }
+        }
+        @media (max-width: 768px) {
+             .nav-links, .cta-nav {
+                display: none;
+            }
+            .hamburger {
+                display: block;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
             }
         }
     </style>
@@ -461,7 +454,7 @@
     <header>
         <div class="nav-container">
             <div class="logo">
-                <i class="fas fa-warehouse"></i> MetalPro Estructuras
+                <i class="fas fa-hammer"></i> MetalPro Estructuras
             </div>
             <nav>
                 <ul class="nav-links">
@@ -472,8 +465,7 @@
                 </ul>
             </nav>
             <div class="cta-nav">
-                <a href="#contacto" class="btn btn-primary">Cotizar Ahora</a>
-            </div>
+                </div>
             <div class="hamburger">
                 <i class="fas fa-bars"></i>
             </div>
@@ -482,11 +474,15 @@
 
     <section id="inicio" class="hero">
         <div class="hero-content">
-            <h1>Naves Industriales y Garajes Prefabricados de Clase Mundial</h1>
-            <p>Estructuras metálicas diseñadas para durar. Más de 17 años de experiencia construyendo soluciones rápidas, resistentes y económicas.</p>
-            <div>
-                <a href="#contacto" class="btn btn-primary">Solicitar Presupuesto</a>
-                <a href="#modelos" class="btn btn-outline">Ver Modelos</a>
+            <div class="tag">⭐ ¡EXPERTOS EN ACERO! ⭐</div>
+            <h1>Construimos tus Sueños <span class="solid">Sólidos</span> y <span class="fast">Rápidos</span>⚡</h1>
+            <p>Naves industriales y garajes que duran para siempre. 💪 ¡Mejor precio garantizado y montaje flash! ⏱️💰</p>
+            <div class="btn-container">
+                <a href="#contacto" class="btn btn-primary">
+                    ¡Quiero Cotizar!
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="#modelos" class="btn btn-outline">Ver Modelos 👀</a>
             </div>
         </div>
     </section>
@@ -516,12 +512,12 @@
                 <div class="feature-card">
                     <i class="fas fa-medal"></i>
                     <h3>17+ Años Experiencia</h3>
-                    <p>Líderes en estructuras metálicas (Canglong Steel Structure), con cientos de proyectos exitosos.</p>
+                    <p>Líderes en estructuras metálicas, con cientos de proyectos exitosos.</p>
                 </div>
             </div>
         </div>
     </section>
-
+    
     <section id="modelos" class="products">
         <div class="container">
             <div class="section-header">
@@ -573,70 +569,79 @@
     </section>
 
     <section id="contacto" class="contact">
-        <div class="contact-container">
-            <div class="contact-info">
-                <h2>¡Construyamos tu Proyecto!</h2>
-                <p style="margin-bottom: 30px; opacity: 0.9;">Completa el formulario y uno de nuestros ingenieros te contactará en menos de 24 horas con una cotización personalizada.</p>
-                
-                <div class="contact-item">
-                    <i class="fas fa-phone-alt"></i>
-                    <div>
-                        <h4>Llámanos</h4>
-                        <p>+1 (555) 123-4567</p> 
-                    </div>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-envelope"></i>
-                    <div>
-                        <h4>Email</h4>
-                        <p>navesmetalpro@gmail.com</p>
-                    </div>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <div>
-                        <h4>Oficina</h4>
-                        <p>avenida los beisbolista #89</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="contact-form">
-                <form id="quoteForm">
-                    <h3 style="color: var(--primary); margin-bottom: 20px;">Solicitar Cotización</h3>
+        <div class="container">
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h2>¡Hablemos YA! ✋</h2>
+                    <p style="margin-bottom: 40px;">Completa el formulario y te enviamos tu cotización ¡en menos de 24h! 🚀</p>
                     
-                    <div class="form-group">
-                        <label>Nombre Completo</label>
-                        <input type="text" class="form-control" placeholder="Tu nombre" required>
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <div>
+                            <h4>Llámanos / WhatsApp</h4>
+                            <p>+1 (809) 348 9618</p> 
+                        </div>
                     </div>
-                    
-                    <div class="form-group">
-                        <label>Email</label>
-                        <input type="email" class="form-control" placeholder="tucorreo@empresa.com" required>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>navesmetalpro@gmail.com</p>
+                        </div>
                     </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Oficina</h4>
+                            <p>avenida los beisbolista #89</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-telegram-plane"></i>
+                        <div>
+                            <h4>Telegram</h4>
+                            <p>¡Escríbenos!</p>
+                        </div>
+                    </div>
+                </div>
 
-                    <div class="form-group">
-                        <label>Teléfono</label>
-                        <input type="tel" class="form-control" placeholder="(555) 000-0000" required>
-                    </div>
+                <div class="contact-form">
+                    <form id="quoteForm">
+                        <h3>Solicitar Cotización 📝</h3>
+                        
+                        <div class="form-group">
+                            <label>Nombre Completo</label>
+                            <input type="text" class="form-control" placeholder="Tu nombre" name="Nombre" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" class="form-control" placeholder="tucorreo@empresa.com" name="Email" required>
+                        </div>
 
-                    <div class="form-group">
-                        <label>Tipo de Estructura</label>
-                        <select class="form-control">
-                            <option>Garaje Personal</option>
-                            <option>Nave Industrial / Almacén</option>
-                            <option>Taller Mecánico</option>
-                            <option>Otro</option>
-                        </select>
-                    </div>
+                        <div class="form-group">
+                            <label>Teléfono</label>
+                            <input type="tel" class="form-control" placeholder="(555) 000-0000" name="Teléfono" required>
+                        </div>
 
-                    <div class="form-group">
-                        <label>Dimensiones Estimadas / Detalles</label>
-                        <textarea class="form-control" rows="3" placeholder="Ej: 20x30 metros..."></textarea>
-                    </div>
+                        <div class="form-group">
+                            <label>Tipo de Estructura</label>
+                            <select class="form-control" name="Tipo de Estructura">
+                                <option>Garaje Personal</option>
+                                <option>Nave Industrial / Almacén</option>
+                                <option>Taller Mecánico</option>
+                                <option>Otro</option>
+                            </select>
+                        </div>
 
-                    <button type="submit" class="btn btn-primary" style="width: 100%;">Enviar Solicitud</button>
-                </form>
+                        <div class="form-group">
+                            <label>Dimensiones Estimadas / Detalles</label>
+                            <textarea class="form-control" rows="3" placeholder="Ej: 20x30 metros, 5m de altura..." name="Detalles"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Enviar Solicitud</button>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
@@ -644,14 +649,13 @@
     <footer>
         <p>&copy; 2025 MetalPro Estructuras. Todos los derechos reservados.</p>
         <div style="margin-top: 10px;">
-            <i class="fab fa-facebook fa-lg" style="margin: 0 10px; cursor: pointer;"></i>
+            <i class="fab fa-facebook-square fa-lg" style="margin: 0 10px; cursor: pointer;"></i>
             <i class="fab fa-instagram fa-lg" style="margin: 0 10px; cursor: pointer;"></i>
             <i class="fab fa-whatsapp fa-lg" style="margin: 0 10px; cursor: pointer;"></i>
         </div>
     </footer>
 
     <script>
-        // Smooth Scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -663,4 +667,4 @@
     </script>
 
 </body>
-        </html>
+                                                            </html>
