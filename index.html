@@ -4,546 +4,180 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MetalPro Estructuras | Naves Industriales</title>
-    
-    <meta name="description" content="Naves industriales, garajes prefabricados y estructuras metálicas de alta resistencia. Contáctanos: +1 809 348 9618 o navesmetalpro@gmail.com.">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
     <style>
-        /* --- VARIABLES Y RESET --- */
         :root {
-            --primary: #FF5722; /* Naranja/Rojo Vivo - Botones y Acentos */
-            --secondary: #1A237E; /* Azul Marino Oscuro - Fondo principal */
-            --dark-bg: #101646; /* Azul más oscuro para contrastes */
-            --accent: #FFC107; /* Amarillo Brillante */
-            --whatsapp: #25d366; 
-            --light: #F5F5F5;
+            --primary: #FF5722;
+            --secondary: #1A237E;
+            --dark: #0D1231;
             --white: #ffffff;
-            --shadow: 0 10px 30px rgba(0,0,0,0.4);
-            --transition: all 0.3s ease;
+            --light: #f4f4f4;
+            --whatsapp: #25d366;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        body { background-color: var(--white); color: var(--dark); overflow-x: hidden; }
 
-        body {
-            font-family: 'Roboto', sans-serif;
-            color: var(--white);
-            line-height: 1.6;
-            background-color: var(--secondary);
-            overflow-x: hidden;
-        }
-
-        a {
-            text-decoration: none;
-            color: var(--primary);
-            transition: var(--transition);
-        }
-
-        a:hover {
-            opacity: 0.8;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* --- BOTONES --- */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 15px 30px;
-            border-radius: 8px;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            transition: var(--transition);
-            cursor: pointer;
-            border: none;
-            gap: 10px;
-            text-align: center;
-        }
-
-        .btn-primary {
-            background-color: var(--primary);
-            color: var(--white);
-            font-size: 1rem;
-            box-shadow: 0 4px 15px rgba(255, 87, 34, 0.4);
-        }
-
-        .btn-primary:hover {
-            background-color: #E64A19;
-        }
-        
-        .btn-secondary {
-            background-color: var(--dark-bg);
-            color: var(--white);
-            border: 2px solid var(--primary);
-        }
-
-        /* --- WHATSAPP FLOTANTE --- */
-        .whatsapp-float {
-            position: fixed;
-            width: 60px;
-            height: 60px;
-            bottom: 30px;
-            right: 30px;
-            background-color: var(--whatsapp);
-            color: #FFF;
-            border-radius: 50%;
-            text-align: center;
-            font-size: 30px;
-            box-shadow: var(--shadow);
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: transform 0.3s;
-        }
-
-        .whatsapp-float:hover {
-            transform: scale(1.1);
-            color: #FFF;
-        }
-
-        /* --- HEADER Y NAVEGACIÓN --- */
+        /* HEADER */
         header {
-            background-color: var(--dark-bg);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.15);
-            padding: 15px 0;
-            position: sticky;
-            top: 0;
-            z-index: 990;
-        }
-
-        .nav-container {
+            background: var(--white);
+            padding: 15px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--white);
-        }
-
-        .logo i {
-            color: var(--primary);
-            margin-right: 8px;
-        }
-
-        .nav-links {
-            list-style: none;
-            display: flex;
-            gap: 30px;
-        }
-
-        .nav-links a {
-            color: var(--light);
-            font-weight: 500;
-            padding: 5px 0;
-            position: relative;
-        }
+        .logo { font-weight: bold; font-size: 24px; color: var(--secondary); display: flex; align-items: center; gap: 8px; }
+        .logo span { color: var(--primary); }
         
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 0;
-            background-color: var(--primary);
-            transition: width 0.3s;
-        }
-        
-        .nav-links a:hover::after {
-            width: 100%;
-        }
+        .nav-links { display: flex; list-style: none; gap: 25px; }
+        .nav-links a { text-decoration: none; color: var(--dark); font-weight: 500; }
+        .btn-header { background: var(--primary); color: white !important; padding: 8px 15px; border-radius: 5px; }
 
-        .hamburger {
-            display: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--white);
-        }
+        .hamburger { display: none; font-size: 24px; cursor: pointer; }
 
-        /* --- SECCIÓN HERO (ESTILO DE CAPTURA) --- */
+        /* HERO SECTION */
         .hero {
-            background-color: var(--secondary);
-            padding: 100px 0;
-        }
-        
-        .hero-content-grid {
-            display: grid;
-            grid-template-columns: 1.5fr 1fr;
-            gap: 50px;
-            align-items: center;
-        }
-
-        .hero-text h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            line-height: 1.1;
-            font-weight: 900;
-        }
-        
-        .hero-text p {
-            font-size: 1.1rem;
-            margin-bottom: 40px;
-            opacity: 0.9;
-            color: var(--light);
-        }
-        
-        .hero-cta {
+            background: linear-gradient(135deg, var(--secondary) 60%, var(--dark) 100%);
+            padding: 60px 20px;
+            color: white;
             display: flex;
-            gap: 20px;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 500px;
         }
+        .hero-text { max-width: 600px; }
+        .hero-text h1 { font-size: 42px; margin-bottom: 20px; line-height: 1.2; }
+        .hero-text p { font-size: 18px; margin-bottom: 30px; opacity: 0.9; }
+        .hero-btns { display: flex; gap: 15px; }
+        .btn-orange { background: var(--primary); color: white; padding: 12px 25px; border-radius: 5px; text-decoration: none; font-weight: bold; border: none; cursor: pointer; }
+        .hero-img { width: 350px; display: block; }
 
-        .hero-image {
-            position: relative;
-            text-align: center;
-        }
-        
-        .hero-image img {
-            max-width: 100%;
-            height: auto;
+        /* SERVICIOS */
+        .services { padding: 50px 20px; max-width: 1200px; margin: 0 auto; }
+        .services h2 { margin-bottom: 30px; font-size: 28px; }
+        .grid-images { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .grid-images img { width: 100%; border-radius: 10px; height: 250px; object-fit: cover; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+
+        /* CONTACTO / FORMULARIO */
+        .contact-box {
+            background: var(--dark);
+            color: white;
+            padding: 40px;
+            max-width: 900px;
+            margin: 50px auto;
             border-radius: 15px;
-            box-shadow: var(--shadow);
-        }
-
-        /* --- SECCIÓN SERVICIOS (Igual al Diseño) --- */
-        .services {
-            background-color: var(--light);
-            color: var(--dark-bg);
-        }
-        
-        .section-header {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .section-header h2 {
-            font-size: 2.2rem;
-            color: var(--secondary);
-            margin-bottom: 10px;
-        }
-
-        .divider {
-            width: 60px;
-            height: 4px;
-            background-color: var(--primary);
-            margin: 0 auto;
-            border-radius: 2px;
-        }
-
-        .service-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: 1fr;
             gap: 30px;
         }
-
-        .service-card {
-            background-color: var(--white);
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        .contact-box h2 { color: var(--primary); margin-bottom: 20px; }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; margin-bottom: 5px; font-size: 14px; color: #ccc; }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%; padding: 12px; border-radius: 5px; border: none; background: #1a234e; color: white;
         }
+        .info-footer { margin-top: 20px; }
+        .info-item { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+        .info-item i { color: var(--primary); }
 
-        .service-img {
-            height: 200px;
-            background-size: cover;
-            background-position: center;
-        }
-        /* Imágenes de placeholder */
-        .img-1 { background-image: url('https://via.placeholder.com/800x600/1A237E/ffffff?text=Nave+1'); }
-        .img-2 { background-image: url('https://via.placeholder.com/800x600/FF5722/ffffff?text=Nave+2'); }
-        .img-3 { background-image: url('https://via.placeholder.com/800x600/FFC107/1A237E?text=Nave+3'); }
-
-        /* --- SECCIÓN CONTACTO INCRUSTADA --- */
-        .contact {
-            background-color: var(--secondary);
-            padding: 80px 0;
-            color: var(--light);
+        /* WHATSAPP */
+        .whatsapp-float {
+            position: fixed; bottom: 20px; right: 20px; background: var(--whatsapp);
+            width: 60px; height: 60px; border-radius: 50%; display: flex;
+            align-items: center; justify-content: center; color: white; font-size: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3); z-index: 1000;
         }
 
-        .contact-form-container {
-            background-color: var(--dark-bg);
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: var(--shadow);
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .contact-form-container h2 {
-            font-size: 2rem;
-            color: var(--white);
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-        
-        .form-row {
-            display: flex;
-            gap: 20px;
-            margin-bottom: 20px;
-        }
-        
-        .form-row .form-group {
-            flex: 1;
-            margin-bottom: 0;
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #333;
-            border-radius: 4px;
-            box-sizing: border-box;
-            font-size: 1rem;
-            background-color: #2a3377; /* Color de fondo similar a la captura */
-            color: var(--white);
-        }
-
-        .form-control::placeholder {
-            color: #ccc;
-        }
-
-        .form-control:focus {
-            border-color: var(--primary);
-            outline: none;
-        }
-        
-        /* Información de contacto dentro del formulario */
-        .contact-details {
-            margin-top: 30px;
-            border-top: 1px solid #2a3377;
-            padding-top: 20px;
-        }
-        
-        .contact-details p {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-            font-size: 1rem;
-        }
-
-        .contact-details i {
-            color: var(--whatsapp);
-            margin-right: 10px;
-            font-size: 1.2rem;
-        }
-
-
-        /* --- FOOTER --- */
-        footer {
-            background-color: var(--dark-bg);
-            color: var(--light);
-            text-align: center;
-            padding: 30px 0;
-            font-size: 0.9rem;
-        }
-
-        /* --- RESPONSIVE / VISTA MÓVIL (Menú Hamburguesa) --- */
+        /* MOBILE */
         @media (max-width: 768px) {
-            .hero {
-                padding: 60px 0;
-            }
-            .hero-content-grid {
-                grid-template-columns: 1fr;
-            }
-            .hero-image {
-                display: none; /* Ocultar la imagen del teléfono en móvil */
-            }
-            .hero-text h1 {
-                font-size: 2.5rem;
-            }
-            .hero-cta {
-                flex-direction: column;
-                gap: 15px;
-            }
-            .nav-links {
-                /* Menú Hamburguesa cerrado por defecto */
-                display: none;
-                flex-direction: column;
-                width: 100%;
-                background-color: var(--dark-bg);
-                position: absolute;
-                top: 70px; /* Debajo del header */
-                left: 0;
-                padding: 10px 0;
-                box-shadow: 0 5px 10px rgba(0,0,0,0.5);
-            }
-            .nav-links.active {
-                display: flex; /* Menú visible al hacer clic */
-            }
-            .nav-links li {
-                text-align: center;
-                width: 100%;
-            }
-            .nav-links a {
-                padding: 10px 0;
-                display: block;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            }
-            .hamburger {
-                display: block;
-            }
-            .form-row {
-                flex-direction: column;
-                gap: 0;
-            }
+            .nav-links { display: none; flex-direction: column; position: absolute; top: 70px; left: 0; width: 100%; background: white; padding: 20px; box-shadow: 0 5px 10px rgba(0,0,0,0.1); }
+            .nav-links.active { display: flex; }
+            .hamburger { display: block; }
+            .hero { flex-direction: column; text-align: center; }
+            .hero-img { margin-top: 40px; width: 280px; }
+            .grid-images { grid-template-columns: 1fr; }
+            .hero-btns { justify-content: center; }
         }
     </style>
 </head>
 <body>
 
-    <a href="https://wa.me/18093489618?text=Hola,%20me%20interesa%20cotizar%20una%20estructura%20metálica" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+    <a href="https://wa.me/18093489618" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
     <header>
-        <div class="container nav-container">
-            <div class="logo">
-                <i class="fas fa-warehouse"></i> MetalPro
-            </div>
-            <nav>
-                <ul class="nav-links" id="navLinks">
-                    <li><a href="#inicio">Inicio</a></li>
-                    <li><a href="#servicios">Servicios</a></li>
-                    <li><a href="#contacto">Contacto</a></li>
-                    </ul>
-            </nav>
-            <div class="hamburger" id="hamburger">
-                <i class="fas fa-bars"></i>
-            </div>
-        </div>
+        <div class="logo"><i class="fas fa-warehouse"></i> Metal<span>Pro</span></div>
+        <i class="fas fa-bars hamburger" id="menu-icon"></i>
+        <ul class="nav-links" id="nav-menu">
+            <li><a href="#">Servicios</a></li>
+            <li><a href="#">Modelos</a></li>
+            <li><a href="#">Contacto</a></li>
+            <li><a href="#cotizar" class="btn-header">Cotizar</a></li>
+        </ul>
     </header>
 
-    <section id="inicio" class="hero">
-        <div class="container">
-            <div class="hero-content-grid">
-                <div class="hero-text">
-                    <h1>Naves industriales, construimos tus sueños.</h1>
-                    <p>Mano de obra, estructuras metálicas, pilares y pilotes, alta resistencia al viento y sismos. ¡Cotiza tu proyecto hoy!</p>
-                    <div class="hero-cta">
-                        <a href="#contacto" class="btn btn-primary">
-                            Cotizar Ahora
-                            <i class="fas fa-arrow-right"></i>
-                        </a>
-                        <a href="#servicios" class="btn btn-secondary">
-                            Ver Proyectos
-                        </a>
-                    </div>
-                </div>
-                <div class="hero-image">
-                    <img src="https://via.placeholder.com/400x700/000000/ffffff?text=COTIZADOR+EN+TELÉFONO" alt="Cotizador móvil">
-                </div>
+    <section class="hero">
+        <div class="hero-text">
+            <h1>Naves industriales <br>Construimos tus Sueños</h1>
+            <p>Estructuras pre-fabricadas de alta resistencia y rápida instalación. ¡Hablemos hoy mismo!</p>
+            <div class="hero-btns">
+                <a href="#cotizar" class="btn-orange">Cotizar Ahora</a>
+                <a href="https://wa.me/18093489618" class="btn-orange" style="background:transparent; border:1px solid white;">WhatsApp</a>
             </div>
+        </div>
+        <img src="https://i.ibb.co/LhqS8S6/phone-mockup.png" class="hero-img" alt="Celular">
+    </section>
+
+    <section class="services">
+        <h2>Nuestros Proyectos</h2>
+        <div class="grid-images">
+            <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800" alt="Nave 1">
+            <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800" alt="Nave 2">
+            <img src="https://images.unsplash.com/photo-1541888946425-d81bb19480c5?auto=format&fit=crop&w=800" alt="Nave 3">
         </div>
     </section>
 
-    <section id="servicios" class="services">
-        <div class="container">
-            <div class="section-header">
-                <h2>Servicios Destacados</h2>
-                <div class="divider"></div>
-            </div>
-            <div class="service-grid">
-                <div class="service-card">
-                    <div class="service-img img-1"></div>
-                    </div>
-                <div class="service-card">
-                    <div class="service-img img-2"></div>
+    <section class="contact-box" id="cotizar">
+        <div>
+            <h2>Solicitar Cotización</h2>
+            <form action="https://formspree.io/f/xvgzlowj" method="POST">
+                <div class="form-group">
+                    <label>Nombre</label>
+                    <input type="text" name="nombre" required placeholder="Tu nombre">
                 </div>
-                <div class="service-card">
-                    <div class="service-img img-3"></div>
+                <div class="form-group">
+                    <label>Teléfono</label>
+                    <input type="text" name="telefono" required placeholder="+1 (809) 000-0000">
                 </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" name="email" required placeholder="navesmetalpro@gmail.com">
+                </div>
+                <div class="form-group">
+                    <label>Mensaje / Medidas</label>
+                    <textarea name="mensaje" rows="4" placeholder="Ej: Nave de 20x30 metros"></textarea>
+                </div>
+                <button type="submit" class="btn-orange" style="width:100%">Enviar a MetalPro</button>
+            </form>
+
+            <div class="info-footer">
+                <div class="info-item"><i class="fas fa-phone"></i> +1 (809) 348 9618</div>
+                <div class="info-item"><i class="fas fa-envelope"></i> navesmetalpro@gmail.com</div>
+                <div class="info-item"><i class="fas fa-map-marker-alt"></i> avenida los beisbolista #89</div>
             </div>
         </div>
     </section>
-
-    <section id="contacto" class="contact">
-        <div class="container">
-            <div class="contact-form-container">
-                <h2>¡Cotiza tu Estructura Ya!</h2>
-                <form id="finalQuoteForm">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <input type="text" class="form-control" name="Nombre" placeholder="Nombre Completo" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" class="form-control" name="Email" placeholder="Correo Electrónico" required>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <input type="tel" class="form-control" name="Telefono" placeholder="Teléfono / WhatsApp" required>
-                        </div>
-                        <div class="form-group">
-                            <select class="form-control" name="Tipo">
-                                <option>Tipo de Estructura...</option>
-                                <option>Nave Industrial</option>
-                                <option>Garaje Prefabricado</option>
-                                <option>Techo Metálico</option>
-                                <option>Otro Proyecto</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <textarea class="form-control" name="Detalles" rows="4" placeholder="Dimensiones estimadas (Ej: 20x30m) y otros detalles..."></textarea>
-                    </div>
-                    
-                    <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px;">Enviar Solicitud</button>
-                    
-                    <div class="contact-details">
-                        <p><i class="fab fa-whatsapp"></i> +1 (809) 348 9618</p>
-                        <p><i class="fas fa-envelope"></i> navesmetalpro@gmail.com</p>
-                        <p><i class="fas fa-map-marker-alt"></i> avenida los beisbolista #89</p>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <p>&copy; 2025 MetalPro Estructuras. Todos los derechos reservados.</p>
-    </footer>
 
     <script>
-        // 1. Funcionalidad del Menú Hamburguesa
-        const hamburger = document.getElementById('hamburger');
-        const navLinks = document.getElementById('navLinks');
+        const menuIcon = document.getElementById('menu-icon');
+        const navMenu = document.getElementById('nav-menu');
 
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-        
-        // 2. Smooth Scroll (para navegar fluidamente)
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                // Ocultar el menú en móvil después de hacer clic
-                if(navLinks.classList.contains('active')) {
-                     navLinks.classList.remove('active');
-                }
-                
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
+        menuIcon.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
         });
     </script>
-
 </body>
-    </html>
+                </html>
