@@ -1,35 +1,140 @@
-<section class="contacto" id="cotizar">
-    <div class="form-card">
-        <h2 style="margin-bottom:25px; text-align: center;">Solicitar Cotización 📝</h2>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MetalPro Estructuras | Expertos en Acero</title>
+    <meta name="description" content="Naves industriales en Santo Domingo. Contacto: 18093489618 | navesmetalpro@gmail.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root { --naranja: #FF6B00; --azul-oscuro: #0D1231; --blanco: #ffffff; --gris-suave: #f4f4f4; }
         
-        <form action="https://api.web3forms.com/submit" method="POST">
-            <input type="hidden" name="access_key" value="966bcaa6-e57f-43ee-b14a-71649964f52e">
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: var(--azul-oscuro); color: var(--blanco); scroll-behavior: smooth; }
 
-            <div class="form-group">
-                <label>Nombre Completo</label>
-                <input type="text" name="name" required placeholder="Tu nombre">
-            </div>
-            <div class="form-group">
-                <label>Teléfono (WhatsApp)</label>
-                <input type="text" name="phone" required placeholder="+1 (809) 348 9618">
-            </div>
-            <div class="form-group">
-                <label>Correo Electrónico</label>
-                <input type="email" name="email" required placeholder="navesmetalpro@gmail.com">
-            </div>
-            <div class="form-group">
-                <label>¿Qué necesitas construir? (Medidas)</label>
-                <textarea name="message" rows="4" placeholder="Ej. Nave de 20x40 metros..."></textarea>
-            </div>
+        /* HEADER */
+        header { background: var(--blanco); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .logo { color: var(--azul-oscuro); font-weight: 800; font-size: 24px; display: flex; align-items: center; gap: 8px; }
+        .logo span { color: var(--naranja); }
+        .nav-links { display: none; } /* Oculto para estilo móvil primero */
 
-            <input type="hidden" name="from_name" value="Web MetalPro">
-            
-            <button type="submit" class="btn-enviar">Enviar Solicitud <i class="fas fa-paper-plane"></i></button>
-        </form>
+        /* HERO SECTION */
+        .hero { 
+            height: 80vh; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            padding: 0 10%; 
+            background: linear-gradient(rgba(13, 18, 49, 0.7), rgba(13, 18, 49, 0.7)), url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2070'); 
+            background-size: cover; 
+            background-position: center;
+        }
+        .hero h1 { font-size: 48px; line-height: 1.1; margin-bottom: 20px; }
+        .hero h1 span { color: var(--naranja); }
+        .hero p { font-size: 18px; margin-bottom: 30px; max-width: 600px; }
+        .btn-principal { background: var(--naranja); color: white; padding: 15px 35px; border-radius: 5px; text-decoration: none; font-weight: bold; font-size: 18px; display: inline-block; transition: 0.3s; }
 
-        <div class="info-footer" style="margin-top:20px; color: white; opacity: 0.8;">
-            <p><i class="fas fa-map-marker-alt"></i> Avenida Los Beisbolistas #89</p>
-            <p><i class="fas fa-phone"></i> +1 (809) 348 9618</p>
+        /* SERVICIOS / MODELOS */
+        .servicios { padding: 60px 5%; background: var(--gris-suave); color: var(--azul-oscuro); text-align: center; }
+        .servicios h2 { font-size: 32px; margin-bottom: 40px; }
+        .grid-servicios { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+        .card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.1); transition: 0.3s; border-bottom: 5px solid var(--naranja); }
+        .card img { width: 100%; height: 200px; object-fit: cover; }
+        .card:hover { transform: translateY(-10px); }
+
+        /* FORMULARIO CONTACTO */
+        .seccion-contacto { padding: 80px 5%; display: flex; justify-content: center; }
+        .form-contenedor { background: #161D3D; padding: 40px; border-radius: 20px; width: 100%; max-width: 600px; box-shadow: 0 15px 35px rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1); }
+        .form-contenedor h2 { margin-bottom: 30px; text-align: center; color: var(--naranja); }
+        .campo { margin-bottom: 20px; }
+        .campo label { display: block; margin-bottom: 8px; font-weight: bold; font-size: 14px; }
+        .campo input, .campo textarea { width: 100%; padding: 12px; border-radius: 8px; border: none; background: #252D52; color: white; font-size: 16px; }
+        .btn-enviar { background: var(--naranja); color: white; width: 100%; padding: 15px; border: none; border-radius: 8px; font-weight: bold; font-size: 18px; cursor: pointer; transition: 0.3s; }
+
+        /* INFO ADICIONAL */
+        .footer-info { margin-top: 30px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); }
+        .info-item { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+        .info-item i { color: var(--naranja); }
+
+        /* BOTÓN WHATSAPP */
+        .btn-whatsapp { position: fixed; bottom: 30px; right: 30px; background: #25d366; width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; color: white; font-size: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); z-index: 1000; text-decoration: none; }
+
+        @media (max-width: 768px) { .hero h1 { font-size: 32px; } }
+    </style>
+</head>
+<body>
+
+    <a href="https://wa.me/18093489618" class="btn-whatsapp" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <header>
+        <div class="logo"><i class="fas fa-warehouse"></i> Metal<span>Pro</span></div>
+        <div style="color: var(--azul-oscuro); font-size: 24px;"><i class="fas fa-bars"></i></div>
+    </header>
+
+    <section class="hero">
+        <h1>Construimos tus <span>Sueños</span><br>Sólidos y Rápidos</h1>
+        <p>Expertos en naves industriales y estructuras metálicas de alta resistencia con el mejor precio del mercado.</p>
+        <a href="#contacto" class="btn-principal">¡Quiero Cotizar! <i class="fas fa-arrow-right"></i></a>
+    </section>
+
+    <section class="servicios">
+        <h2>Nuestros Modelos</h2>
+        <div class="grid-servicios">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=800" alt="Nave Industrial">
+                <div style="padding: 15px;"><h3>Naves de Almacenaje</h3></div>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1541888946425-d81bb19480c5?q=80&w=800" alt="Estructura Metálica">
+                <div style="padding: 15px;"><h3>Talleres Modernos</h3></div>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=800" alt="Construcción">
+                <div style="padding: 15px;"><h3>Garajes Industriales</h3></div>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
+
+    <section class="seccion-contacto" id="contacto">
+        <div class="form-contenedor">
+            <h2>Solicitar Cotización 📝</h2>
+            
+            <form action="https://api.web3forms.com/submit" method="POST">
+                <input type="hidden" name="access_key" value="966bcaa6-e57f-43ee-b14a-71649964f52e">
+
+                <div class="campo">
+                    <label>Nombre Completo</label>
+                    <input type="text" name="name" required placeholder="Ej: Julio Montaño">
+                </div>
+                <div class="campo">
+                    <label>Teléfono (WhatsApp)</label>
+                    <input type="text" name="phone" required placeholder="+1 (809) 348 9618">
+                </div>
+                <div class="campo">
+                    <label>Correo Electrónico</label>
+                    <input type="email" name="email" required placeholder="navesmetalpro@gmail.com">
+                </div>
+                <div class="campo">
+                    <label>Detalles de la Obra (Medidas)</label>
+                    <textarea name="message" rows="4" placeholder="Ej: Necesito una nave de 15x30 metros..."></textarea>
+                </div>
+
+                <button type="submit" class="btn-enviar">Enviar Solicitud <i class="fas fa-paper-plane"></i></button>
+            </form>
+
+            <div class="footer-info">
+                <div class="info-item"><i class="fas fa-map-marker-alt"></i> Avenida Los Beisbolistas #89</div>
+                <div class="info-item"><i class="fas fa-envelope"></i> navesmetalpro@gmail.com</div>
+                <div class="info-item"><i class="fas fa-phone"></i> +1 (809) 348 9618</div>
+            </div>
+        </div>
+    </section>
+
+    <footer style="text-align: center; padding: 20px; font-size: 12px; opacity: 0.6;">
+        &copy; 2025 MetalPro Estructuras. Todos los derechos reservados.
+    </footer>
+
+</body>
+                    </html>
